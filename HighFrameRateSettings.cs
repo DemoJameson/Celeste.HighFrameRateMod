@@ -3,16 +3,23 @@ using System;
 
 namespace Celeste.Mod.HighFrameRateMod {
     public class HighFrameRateSettings : EverestModuleSettings {
-        private const int DefaultFrameRate = 60;
-
         private bool enabled = false;
+        private bool overworldOnly = false;
         private int frameRate = 120;
 
         public bool Enabled {
             get => enabled;
             set {
                 enabled = value;
-                ApplyFrameRate();
+                HighFrameRateModule.Instance.ApplyFrameRate();
+            }
+        }
+
+        public bool OverworldOnly {
+            get => overworldOnly;
+            set {
+                overworldOnly = value;
+                HighFrameRateModule.Instance.ApplyFrameRate();
             }
         }
 
@@ -21,13 +28,8 @@ namespace Celeste.Mod.HighFrameRateMod {
             get => frameRate;
             set {
                 frameRate = value;
-                ApplyFrameRate();
+                HighFrameRateModule.Instance.ApplyFrameRate();
             }
-        }
-
-        private void ApplyFrameRate() {
-            int newFrameRate = enabled ? frameRate : DefaultFrameRate;
-            Engine.Instance.TargetElapsedTime = new TimeSpan((long) Math.Round(10000000.0 / newFrameRate));
         }
     }
 }

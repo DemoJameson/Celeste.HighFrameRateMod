@@ -1,5 +1,5 @@
 - Name: HighFrameRateMod
-  Version: 0.0.1
+  Version: 0.1.0
   DLL: HighFrameRateMod.dll
   Dependencies:
     - Name: Everest
