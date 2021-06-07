@@ -27,6 +27,7 @@ namespace Celeste.Mod.HighFrameRateMod {
 
         public override void Unload() {
             On.Monocle.Scene.Begin -= SceneOnBegin;
+            IL.Celeste.SpeedrunTimerDisplay.DrawTime -= RecolorTimer;
         }
 
         private void SceneOnBegin(On.Monocle.Scene.orig_Begin orig, Scene self) {
@@ -79,9 +80,11 @@ namespace Celeste.Mod.HighFrameRateMod {
             if (Settings.OverworldOnly && Engine.Scene is Level or LevelLoader or LevelExit) {
                 newFrameRate = DefaultFrameRate;
             }
+
             if (!Settings.Enabled) {
                 newFrameRate = DefaultFrameRate;
             }
+
             Engine.Instance.TargetElapsedTime = new TimeSpan((long) Math.Round(10000000.0 / newFrameRate));
         }
     }
