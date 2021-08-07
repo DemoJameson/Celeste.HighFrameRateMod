@@ -59,13 +59,13 @@ namespace Celeste.Mod.HighFrameRateMod {
             ILLabel beforeInstr = cursor.DefineLabel();
             cursor.Emit(OpCodes.Brfalse, beforeInstr);
 
-            cursor.Emit(OpCodes.Ldstr, "dcfce6");
+            cursor.Emit(OpCodes.Ldstr, "bdf2ce");
             cursor.Emit(OpCodes.Call, typeof(Calc).GetMethod("HexToColor", new[] {typeof(string)}));
             cursor.Emit(OpCodes.Ldarg, 6);
             cursor.Emit(OpCodes.Call, typeof(Color).GetMethod("op_Multiply"));
             cursor.Emit(OpCodes.Stloc, 5);
 
-            cursor.Emit(OpCodes.Ldstr, "bfe6b5");
+            cursor.Emit(OpCodes.Ldstr, "92deab");
             cursor.Emit(OpCodes.Call, typeof(Calc).GetMethod("HexToColor", new[] {typeof(string)}));
             cursor.Emit(OpCodes.Ldarg, 6);
             cursor.Emit(OpCodes.Call, typeof(Color).GetMethod("op_Multiply"));
